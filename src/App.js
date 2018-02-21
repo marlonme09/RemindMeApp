@@ -1,32 +1,33 @@
 /**
-* IntroScreen
-*
-**/
+ * Remind Me App
+ * Remind App for iOS and Android
+ * @flow
+ */
 
 import React, { Component } from 'react';
 import {
   View,
-  StyleSheet,
+  StyleSheet
 } from 'react-native';
-import { StackNavigator } from 'react-native-navigation';
+import { StackNavigator } from 'react-navigation';
 import IntroScreen from './screens/IntroScreen';
 import TasksScreen from './screens/TasksScreen';
 
-
-
-//Screens
+//Or Export this...
 const ScreenStack = StackNavigator(
   {
-  Home: { screen: IntroScreen },
-  Tasks: { screen: TasksScreen }
+    Home: { screen: IntroScreen },
+    Tasks: { screen: TasksScreen }
   },
   {
     headerMode: 'none'
   }
 );
+//TODO: Delete Header... headerMode: 'none'
+
 
 export default class App extends Component<Props> {
   render(){
-    return <ScreenStack/>
+    return <ScreenStack />;
   }
 }
