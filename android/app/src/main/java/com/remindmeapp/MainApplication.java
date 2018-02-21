@@ -1,4 +1,4 @@
-package com.awesomeproject;
+package com.remindmeapp;
 
 import android.app.Application;
 
