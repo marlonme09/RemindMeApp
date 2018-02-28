@@ -16,6 +16,10 @@ import {
 
 export default class IntroScreen extends Component<Props> {
 
+  goToTask(){
+    this.props.navigation.navigate('Tasks');
+  }
+
   render() {
     return (
       <View style={styles.container}>

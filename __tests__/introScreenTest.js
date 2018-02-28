@@ -2,8 +2,6 @@ import 'react-native';
 import React from 'react';
 //
 import introscreen from '../src/screens/introscreen';
-
-//
 import renderer from 'react-test-renderer';
 
 describe('IntroScreen Component', () => {
