@@ -8,11 +8,13 @@ import {
   Image,
   StyleSheet,
   ScrollView,
-  TouchableHighlight
+  TouchableHighlight,
+  Modal
 } from 'react-native';
 
 import TasksHeader from './../components/TaskHeader';
 import Task from './../components/Task';
+import AddTaskModal from './../modals/AddTaskModal';
 
 export default class TasksScreen extends Component{
   constructor(props){
@@ -25,8 +27,26 @@ export default class TasksScreen extends Component{
         { id: 4, title: 'Organizar la peda', completed: false },
         { id: 5, title: 'Soportar la cruda', completed: false },
         { id: 6, title: 'Netflix and Chill', completed: false }
-      ]
+      ],
+      modalVisible: false
     }
+  }
+
+  showModal(){
+    this.setState( {modalVisible: true} )
+  }
+
+  hideModal(){
+    this.setState( {modalVisible: false} )
+  }
+
+  addTask(title){
+    const id = 100 + this.state.tasks.length;
+    const newTask = { id, title, completed: false};
+    let tasks = [...this.state.tasks];
+    tasks.push(newTask);
+    this.setState( { tasks } );
+    this.hideModal();
   }
 
   updateTask(targetId){
@@ -61,9 +81,18 @@ export default class TasksScreen extends Component{
       <View style={styles.container}>
         <TasksHeader toBeCompleted={this.calculateToBeCompleted()}/>
         <ScrollView style={styles.taskContainer}>{this.renderTask()}</ScrollView>
-        <TouchableHighlight style={styles.addtaskButton}>
+        <TouchableHighlight style={styles.addTaskButton} onPress={this.showModal.bind(this)}>
           <Image style={styles.plusIcon} source={require('./../images/icon-plus.png')}/>
         </TouchableHighlight>
+        <Modal
+          animationType="slide"
+          trasparent={true}
+          onRequestClose={ ()=>{this.hideModal()}}
+          visible={this.state.modalVisible}>
+          <AddTaskModal
+            addTask={ this.addTask.bind(this) }
+            hideModal={ this.hideModal.bind(this) }/>
+        </Modal>
       </View>
     )
   }
@@ -77,7 +106,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
-  addtaskButton: {
+  addTaskButton: {
     backgroundColor: '#ED184A',
     width: 66,
     height: 66,

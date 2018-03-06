@@ -14,7 +14,7 @@ import IntroScreen from './screens/IntroScreen';
 import TasksScreen from './screens/TasksScreen';
 
 //Or Export this...
-const ScreenStack = StackNavigator(
+export default App = StackNavigator(
   {
     Home: { screen: IntroScreen },
     Tasks: { screen: TasksScreen }
@@ -23,14 +23,6 @@ const ScreenStack = StackNavigator(
     headerMode: 'none'
   }
 );
-//TODO: Delete Header... headerMode: 'none'
-
-
-export default class App extends Component<Props> {
-  render(){
-    return <ScreenStack />;
-  }
-}
 
 const styles = StyleSheet.create({
   mainAppContainer: {
