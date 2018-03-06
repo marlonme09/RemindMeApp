@@ -37,12 +37,12 @@ export default class IntroScreen extends Component<Props> {
               style={ styles.input }
               onChangeText={ ( text )=>{ this.setState({ taskTitle: text }) } }/>
 
-            <TouchableHighlight style={ styles.BotonAgregar }
+            <TouchableHighlight style={ styles.botonAgregar }
               onPress={ ()=>{ this.props.addTask( this.state.taskTitle ) } }>
               <Text style={ styles.textoAgregar }>AGREGAR</Text>
             </TouchableHighlight>
 
-            <TouchableHighlight style={ styles.BotonCancelar }
+            <TouchableHighlight style={ styles.botonCancelar }
               onPress={ ()=>{ this.props.hideModal() } }>
               <Text style={ styles.textoCancelar }>CANCELAR</Text>
             </TouchableHighlight>
@@ -86,14 +86,14 @@ const styles = StyleSheet.create({
     width: 285,
     height: 75
   },
-  BotonAgregar: {
+  botonAgregar: {
     width: 305,
     height: 55,
     padding: 17,
     borderRadius: 100,
     backgroundColor: '#ED184A'
   },
-  BotonCancelar: {
+  botonCancelar: {
     width: 305,
     height: 55,
     padding: 17,
